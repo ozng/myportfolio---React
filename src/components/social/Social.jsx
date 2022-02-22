@@ -4,50 +4,58 @@ export default function Testimonials() {
   const data = [
     {
       id: 1,
-      name: "Tom Durden",
-      title: "Senior Developer",
-      img: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      icon: "assets/twitter.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem.",
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/ozan-g%C3%BCrer-729872216/",
+      icon: "assets/linkedin.png",
+      userName: "Ozan Gürer",
+      bgColor: "#0274B3",
     },
     {
       id: 2,
-      name: "Alex Kalinski",
-      title: "Co-Founder of DELKA",
-      img: "https://images.pexels.com/photos/428321/pexels-photo-428321.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      icon: "assets/youtube.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem recusandae perspiciatis ducimus vel hic temporibus. ",
-      featured: true,
+      name: "Git Hub",
+      link: "https://github.com/ozng",
+      icon: "assets/github.png",
+      userName: "ozng",
+      bgColor: "#222222",
     },
     {
       id: 3,
-      name: "Michael Scott",
-      title: "Regional Manager of Dunder Miflin INC",
-      img: "https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters/large/800/Michael-Scott.The-Office.webp",
-      icon: "assets/linkedin.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem",
+      name: "Twitter",
+      link: "https://twitter.com/OzanGrer",
+      icon: "assets/twitter.png",
+      userName: "@OzanGrer",
+      bgColor: "#1D9BF0",
+    },
+    {
+      id: 4,
+      name: "Instagram",
+      link: "https://www.instagram.com/ozangurer12/",
+      icon: "assets/instagram.png",
+      userName: "ozangurer12",
+      bgColor: "#ED4960",
     },
   ];
 
   return (
-    <div id="testimonials" className="testimonials">
+    <div id="social" className="social">
       <h1>Social Media</h1>
-      <div className="container">
+      <ul className="container">
         {data.map((d) => (
-          <div className={d.featured ? "card featured" : "card"}>
-            <div className="top">
-              <img src="assets/right-arrow.png" className="left" alt="" />
-              <img className="user" src={d.img} alt="" />
-              <img className="right" src={d.icon} alt="" />
-            </div>
-            <div className="center">{d.desc}</div>
-            <div className="bottom">
-              <h3>{d.name}</h3>
-              <h4>{d.title}</h4>
-            </div>
-          </div>
+          <li
+            key={d.id}
+            className="item"
+            style={{ backgroundColor: d.bgColor }}
+          >
+            <a href={d.link} target="_blank">
+              <img src={d.icon}></img>
+              <div>
+                <h2>{d.name}</h2>
+                <span>{d.userName}</span>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
