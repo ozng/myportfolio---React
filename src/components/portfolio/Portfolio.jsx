@@ -1,9 +1,29 @@
 import "./portfolio.scss";
 import PortfolioList from "../portfolioList/PortfolioList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as portfolioData from "../../data";
 
 export default function Portfolio() {
   const [selected, setSelected] = useState("featured");
+  const [data, setData] = useState([]);
+
+  const { featuredPortfolio, mobilePortfolio, webPortfolio } = portfolioData;
+
+  useEffect(() => {
+    switch (selected) {
+      case "featured":
+        setData(featuredPortfolio);
+        break;
+      case "mobile":
+        setData(mobilePortfolio);
+        break;
+      case "web":
+        setData(webPortfolio);
+        break;
+      default:
+        setData(featuredPortfolio);
+    }
+  }, [selected]);
 
   const list = [
     {
@@ -34,27 +54,12 @@ export default function Portfolio() {
         ))}
       </ul>
       <div className="container">
-        <div className="item">
-          <img
-            src="https://don16obqbay2c.cloudfront.net/wp-content/uploads/Ios-and-Android_Household_shopapp-1638886989.png"
-            alt=""
-          />
-          <h3>Shop App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://tacchistudios.com/wp-content/uploads/2016/12/pmp-ios-1.png"
-            alt=""
-          />
-          <h3>Places App</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://www.appcoda.com/learnswiftui/images/core-data/swiftui-core-data-1.png"
-            alt=""
-          />
-          <h3>To Do App</h3>
-        </div>
+        {data.map((d) => (
+          <div className="item">
+            <img src={d.img} alt="" />
+            <h3>{d.title}</h3>
+          </div>
+        ))}
       </div>
     </div>
   );
