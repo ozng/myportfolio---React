@@ -1,1 +1,10 @@
 $maincolor: #15023a;
+
+$width: 1120px;
+$height: 769px;
+
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content;
+  }
+}
