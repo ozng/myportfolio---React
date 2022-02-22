@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import * as portfolioData from "../../data";
 
 export default function Portfolio() {
-  const [selected, setSelected] = useState("featured");
+  const [selected, setSelected] = useState("mobile");
   const [data, setData] = useState([]);
 
   const { featuredPortfolio, mobilePortfolio, webPortfolio } = portfolioData;
@@ -26,10 +26,6 @@ export default function Portfolio() {
   }, [selected]);
 
   const list = [
-    {
-      id: "featured",
-      title: "Featured",
-    },
     {
       id: "mobile",
       title: "Mobile App",

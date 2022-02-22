@@ -1,4 +1,4 @@
-import "./testimonials.scss";
+import "./social.scss";
 
 export default function Testimonials() {
   const data = [
@@ -31,7 +31,7 @@ export default function Testimonials() {
 
   return (
     <div id="testimonials" className="testimonials">
-      <h1>Testimonials</h1>
+      <h1>Social Media</h1>
       <div className="container">
         {data.map((d) => (
           <div className={d.featured ? "card featured" : "card"}>
