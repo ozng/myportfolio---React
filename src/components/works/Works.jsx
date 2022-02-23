@@ -1,5 +1,6 @@
 import "./works.scss";
 import { useState } from "react";
+import { mobilePortfolio } from "../../data.js";
 
 export default function Work() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,9 +30,13 @@ export default function Work() {
 
   const handleClick = (direction) => {
     direction === "left" &&
-      setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2);
+      setCurrentSlide(
+        currentSlide > 0 ? currentSlide - 1 : mobilePortfolio.length - 1
+      );
     direction === "right" &&
-      setCurrentSlide(currentSlide < data.length - 1 ? currentSlide + 1 : 0);
+      setCurrentSlide(
+        currentSlide < mobilePortfolio.length - 1 ? currentSlide + 1 : 0
+      );
   };
 
   return (
@@ -40,7 +45,7 @@ export default function Work() {
         className="slider"
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
-        {data.map((d) => (
+        {mobilePortfolio.map((d) => (
           <div className="container">
             <div className="item">
               <div className="left">
@@ -49,8 +54,8 @@ export default function Work() {
                     <img src={d.icon} alt="" />
                   </div>
                   <h2>{d.title}</h2>
-                  <p>{d.desc}</p>
-                  <span>Projects</span>
+                  <p>{d.description}</p>
+                  <span>Try This</span>
                 </div>
               </div>
               <div className="right">
