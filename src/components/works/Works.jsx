@@ -55,7 +55,14 @@ export default function Work() {
                   </div>
                   <h2>{d.title}</h2>
                   <p>{d.description}</p>
-                  <span>Try This</span>
+                  <a target="_blank" href={d.expoLink}>
+                    Try this via Expo Go
+                  </a>
+                  {d.googlePlayStore && (
+                    <a target="_blank" href={d.googlePlayStore}>
+                      Google Play Store
+                    </a>
+                  )}
                 </div>
               </div>
               <div className="right">
