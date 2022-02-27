@@ -1,11 +1,15 @@
 import "./portfolio.scss";
-import PortfolioList from "../portfolioList/PortfolioList";
 import { useState, useEffect } from "react";
+
 import * as portfolioData from "../../data";
+import PortfolioList from "../portfolioList/PortfolioList";
+import Detail from "./Detail/Detail";
 
 export default function Portfolio() {
   const [selected, setSelected] = useState("mobile");
   const [data, setData] = useState([]);
+  const [detailData, setDetailData] = useState([]);
+  const [display, setDisplay] = useState("none");
 
   const { featuredPortfolio, mobilePortfolio, webPortfolio } = portfolioData;
 
@@ -36,6 +40,16 @@ export default function Portfolio() {
     },
   ];
 
+  const handleHide = () => {
+    setDisplay("none");
+    setDetailData([]);
+  };
+
+  const handleShow = (data) => {
+    setDetailData(data);
+    setDisplay("flex");
+  };
+
   return (
     <div id="portfolio" className="portfolio">
       <h1>Portfolio</h1>
@@ -51,12 +65,13 @@ export default function Portfolio() {
       </ul>
       <div className="container">
         {data.map((d) => (
-          <div className="item">
+          <div className="item" onClick={() => handleShow(d)}>
             <img src={d.img} alt="" />
             <h3>{d.title}</h3>
           </div>
         ))}
       </div>
+      <Detail data={detailData} display={display} onHide={handleHide} />
     </div>
   );
 }
